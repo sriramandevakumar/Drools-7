@@ -1,8 +1,16 @@
 package com.sample;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+
 import org.kie.api.KieServices;
 import org.kie.api.runtime.KieContainer;
 import org.kie.api.runtime.KieSession;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 /**
  * This is a sample class to launch a rule.
@@ -11,6 +19,17 @@ public class DroolsTest {
 
     public static final void main(String[] args) {
         try {
+        	String fileUrl = DroolsTest.class.getResource("/json/req.json").getFile();
+        	FileReader fr = new FileReader(new File(fileUrl));
+        	BufferedReader br = new BufferedReader(fr);
+        	String line = null;
+        	StringBuilder sb = new StringBuilder();
+        	while ((line = br.readLine()) != null) {
+        		sb.append(line);
+        	}
+        	JsonObject jsonObj = new JsonParser().parse(sb.toString()).getAsJsonObject();
+        	ProposalInitiation pi = new Gson().fromJson(jsonObj, ProposalInitiation.class);
+        	
             // load up the knowledge base
 	        KieServices ks = KieServices.Factory.get();
     	    KieContainer kContainer = ks.getKieClasspathContainer();

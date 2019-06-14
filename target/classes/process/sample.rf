@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<process xmlns="http://drools.org/drools-5.0/process"
+         xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+         xs:schemaLocation="http://drools.org/drools-5.0/process drools-processes-5.0.xsd"
+         type="RuleFlow" name="sample" id="sampletest" package-name="com.newpack" >
+
+  <header>
+    <imports>
+      <import name="com.sample.vall.value" />
+     
+    </imports>
+  </header>
+
+  <nodes>
+    <start id="1" name="Start" x="16" y="56" width="48" height="48" />
+    <end id="2" name="End" x="401" y="16" width="48" height="48" />
+    <ruleSet id="3" name="Addition" x="96" y="56" width="80" height="48" ruleFlowGroup="Addition" />
+    <split id="4" name="Gateway" x="208" y="56" width="49" height="49" type="2" >
+      <metaData name="UniqueId">
+        <value>bdf2816d-78bc-4eb1-9f91-ad498af30fc5</value>
+      </metaData>
+      <constraints>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="No Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result != 0 );</constraint>
+        <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result == 0 );</constraint>
+      </constraints>
+    </split>
+    <ruleSet id="6" name="Subtraction" x="289" y="16" width="80" height="48" ruleFlowGroup="Subtraction" />
+    <ruleSet id="7" name="Exception" x="289" y="96" width="80" height="48" ruleFlowGroup="Exception" />
+    <fault id="8" name="Error" x="401" y="96" width="48" height="48" faultName="Exception in Addition" />
+  </nodes>
+
+  <connections>
+    <connection from="6" to="2" />
+    <connection from="1" to="3" />
+    <connection from="3" to="4" />
+    <connection from="4" to="6" />
+    <connection from="4" to="7" />
+    <connection from="7" to="8" />
+  </connections>
+
+</process>

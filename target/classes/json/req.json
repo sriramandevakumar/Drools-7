@@ -1,0 +1,52 @@
+{  
+   "RegistrationDetails":[  
+      {  
+         "ProductCode":"N3I",
+         "ProductName":"Manufacturing",
+         "ProductId":"1"
+      },
+      {  
+         "ProductCode":"VFFLDGBD",
+         "ProductName":"Vendor Finance - 100% FLDG Business Delegation",
+         "ProductId":"26"
+      }
+   ],
+   "DocInformation":[  
+      {  
+         "DocCD":"DOC003",
+         "DocDesc":"Account Conduct Report of the Bank account\r",
+         "DocCollected":"1",
+         "Stage":"ICAM",
+         "DocGRPCD":"34564"
+      },
+      {  
+         "DocCD":"DOC002",
+         "DocDesc":"Collateral Visit Report by Relationship Manager",
+         "DocCollected":"1",
+         "Stage":"ICAM",
+         "DocGRPCD":"34564"
+      },
+      {  
+         "DocCD":"DOC001",
+         "DocDesc":"Customer Visit Report by Relationship Manager",
+         "DocCollected":"1",
+         "Stage":"ICAM",
+         "DocGRPCD":"34564"
+      }
+   ],
+   "CAMType":"005",
+   "CustomerName":"Sushmitha Sambath",
+   "City":"007",
+   "ProposedTotalLimit":"120000",
+   "SegmentCode":"MIB",
+   "BranchCode":"CPB",
+   "Region":"001",
+   "SourcingChannel":"BB",
+   "InputterDT":"02-MAY-2019",
+   "InputterID":"CLOUSER1",
+   "CustID":"CLOUSER1",
+   "SelectedProductProgram":"N3I,VFFLDGBD",
+   "RegionDesc":"Musaffah",
+   "BranchDesc":"Dubai-CPB",
+   "BusinessSegmentDesc":"SME"
+}
