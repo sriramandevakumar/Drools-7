@@ -1,0 +1,52 @@
+package com.sample.rules
+ 
+ import com.sample.vall.value;
+import java.util.HashMap;  
+
+import java.util.*;  
+import java.io.*;  
+
+rule "Addition"
+no-loop
+ruleflow-group "Addition"
+when	
+     v:value(v.a!= 0 || v.b !=0);
+  
+then	
+ //Properties prop = new Properties();
+  //  InputStream input = null;
+   // input = new FileInputStream("config.properties");
+
+        // load a properties file
+     //   prop.load(input);
+    //     System.out.println(prop.getProperty("database"));
+   //     System.out.println(prop.getProperty("dbuser"));
+     //   System.out.println(prop.getProperty("dbpassword"));
+		v.result=v.a+v.b;
+	//	HashMap map = new HashMap();
+	//	map.put("re",1);
+		System.out.println("sri");
+		v.a=500;
+		update(v);
+end
+
+
+rule "Subtraction"
+no-loop
+ruleflow-group "Subtraction"
+when	
+     v:value(v.result == 14);		
+then	
+					System.out.println("sri"+v.result);
+		v.result=v.a-v.b;
+		System.out.println("sri"+v.result);
+end
+
+rule "Exception"
+no-loop
+ruleflow-group "Exception"
+when	
+     v:value(v.result == 0);		
+then	
+		System.out.println("Exception in Addition");
+end
