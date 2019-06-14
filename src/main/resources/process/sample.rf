@@ -7,21 +7,20 @@
   <header>
     <imports>
       <import name="com.sample.vall.value" />
-     
     </imports>
   </header>
 
   <nodes>
     <start id="1" name="Start" x="16" y="56" width="48" height="48" />
     <end id="2" name="End" x="401" y="16" width="48" height="48" />
-    <ruleSet id="3" name="Addition" x="96" y="56" width="80" height="48" ruleFlowGroup="Addition" />
+    <ruleSet id="3" name="Inital_set_up" x="96" y="56" width="80" height="48" ruleFlowGroup="Inital_set_up" />
     <split id="4" name="Gateway" x="208" y="56" width="49" height="49" type="2" >
       <metaData name="UniqueId">
         <value>bdf2816d-78bc-4eb1-9f91-ad498af30fc5</value>
       </metaData>
       <constraints>
-        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="No Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result != 0 );</constraint>
         <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result == 0 );</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="No Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result != 0 );</constraint>
       </constraints>
     </split>
     <ruleSet id="6" name="Subtraction" x="289" y="16" width="80" height="48" ruleFlowGroup="Subtraction" />

@@ -1,33 +1,24 @@
 package com.sample.rules
  
- import com.sample.vall.value;
+ import com.sample.ProposalInitiation;
+  import com.sample.DocumentInfo;
 import java.util.HashMap;  
 
 import java.util.*;  
 import java.io.*;  
 
-rule "Addition"
+rule "Inital_set_up"
 no-loop
-ruleflow-group "Addition"
+ruleflow-group "Inital_set_up"
 when	
-     v:value(v.a!= 0 || v.b !=0);
+     p:ProposalInitiation(p.CustID != null);
+     d:DocumentInfo(d.id != 0);
   
 then	
- //Properties prop = new Properties();
-  //  InputStream input = null;
-   // input = new FileInputStream("config.properties");
-
-        // load a properties file
-     //   prop.load(input);
-    //     System.out.println(prop.getProperty("database"));
-   //     System.out.println(prop.getProperty("dbuser"));
-     //   System.out.println(prop.getProperty("dbpassword"));
-		v.result=v.a+v.b;
-	//	HashMap map = new HashMap();
-	//	map.put("re",1);
+ 		List l=new List(p.d);
 		System.out.println("sri");
-		v.a=500;
-		update(v);
+		
+		update(p);
 end
 
 
