@@ -1,0 +1,7 @@
+do.core.validation=true
+eclipse.preferences.version=1
+expression.language=Check java;check
+target.runtime=org.jboss.runtime.jbpm5
+tool.profile/org.jboss.runtime.jbpm5/Full=true
+tool.profile/org.jboss.runtime.jbpm5/RuleFlow=false
+tool.profile/org.jboss.runtime.jbpm5/Simple=false

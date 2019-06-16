@@ -6,35 +6,38 @@
 
   <header>
     <imports>
-      <import name="com.sample.vall.value" />
+      <import name="com.sample.ProposalInitiation" />
+      <import name="org.kie.api.runtime.process.CaseAssignment" />
+      <import name="org.kie.api.runtime.process.CaseData" />
     </imports>
   </header>
 
   <nodes>
     <start id="1" name="Start" x="16" y="56" width="48" height="48" />
-    <end id="2" name="End" x="401" y="16" width="48" height="48" />
     <ruleSet id="3" name="Inital_set_up" x="96" y="56" width="80" height="48" ruleFlowGroup="Inital_set_up" />
-    <split id="4" name="Gateway" x="208" y="56" width="49" height="49" type="2" >
+    <ruleSet id="6" name="Read_Registration" x="289" y="16" width="80" height="48" ruleFlowGroup="Read_Registration" />
+    <end id="9" name="End" x="482" y="56" width="48" height="48" />
+    <split id="10" name="Gateway" x="208" y="56" width="49" height="49" type="2" >
       <metaData name="UniqueId">
-        <value>bdf2816d-78bc-4eb1-9f91-ad498af30fc5</value>
+        <value>291c15af-9e48-473a-915a-2f5e72f31e99</value>
       </metaData>
       <constraints>
-        <constraint toNodeId="7" toType="DROOLS_DEFAULT" name="Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result == 0 );</constraint>
-        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="No Exception" priority="1" type="rule" dialect="mvel" >v:value(v.result != 0 );</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="RegistrationDetails" priority="1" type="rule" dialect="mvel" >p:ProposalInitiation(!(p.getDocInformation().size() &gt;0))</constraint>
+        <constraint toNodeId="11" toType="DROOLS_DEFAULT" name="DocumentDetails" priority="1" type="rule" dialect="mvel" >p:ProposalInitiation(p.getDocInformation().size() &gt;0)</constraint>
       </constraints>
     </split>
-    <ruleSet id="6" name="Subtraction" x="289" y="16" width="80" height="48" ruleFlowGroup="Subtraction" />
-    <ruleSet id="7" name="Exception" x="289" y="96" width="80" height="48" ruleFlowGroup="Exception" />
-    <fault id="8" name="Error" x="401" y="96" width="48" height="48" faultName="Exception in Addition" />
+    <ruleSet id="11" name="Read_Document" x="289" y="96" width="80" height="48" ruleFlowGroup="Read_Document" />
+    <join id="12" name="Gateway" x="401" y="56" width="49" height="49" type="2" />
   </nodes>
 
   <connections>
-    <connection from="6" to="2" />
     <connection from="1" to="3" />
-    <connection from="3" to="4" />
-    <connection from="4" to="6" />
-    <connection from="4" to="7" />
-    <connection from="7" to="8" />
+    <connection from="10" to="6" />
+    <connection from="12" to="9" />
+    <connection from="3" to="10" />
+    <connection from="10" to="11" />
+    <connection from="6" to="12" />
+    <connection from="11" to="12" />
   </connections>
 
 </process>

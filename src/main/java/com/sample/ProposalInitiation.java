@@ -18,6 +18,13 @@ public class ProposalInitiation implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2762218477380661872L;
+	public String flag="false";
+	public String getFlag() {
+		return flag;
+	}
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 	@Id
     @Column(name="APPL_REF_NUM")
 	private String applRefNumber;

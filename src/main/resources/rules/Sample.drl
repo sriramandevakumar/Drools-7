@@ -12,32 +12,40 @@ no-loop
 ruleflow-group "Inital_set_up"
 when	
      p:ProposalInitiation(p.CustID != null);
-     d:DocumentInfo(d.id != 0);
   
 then	
- 		List l=new List(p.d);
-		System.out.println("sri");
-		
-		update(p);
+ 		System.out.println("Customer Name\t"+p.getCustomerName());
+ 		System.out.println("Customer Name\t"+p.getProposedTotalLimit());
+ 		System.out.println("Customer Name\t"+p.getInputterDT());
+ 		
+ 		
+ 		
 end
 
 
-rule "Subtraction"
+rule "Read_Registration"
 no-loop
-ruleflow-group "Subtraction"
+ruleflow-group "Read_Registration"
 when	
-     v:value(v.result == 14);		
+      p:ProposalInitiation(p.CustID != null);	
 then	
-					System.out.println("sri"+v.result);
-		v.result=v.a-v.b;
-		System.out.println("sri"+v.result);
+			for(int i=0;i<p.getRegistrationDetails().size();i++){
+			System.out.println(p.getRegistrationDetails().get(i));
+			}
 end
 
-rule "Exception"
+
+
+rule "Read_Document"
 no-loop
-ruleflow-group "Exception"
+ruleflow-group "Read_Document"
 when	
-     v:value(v.result == 0);		
+      p:ProposalInitiation(p.CustID != null);
+      d:DocumentInfo(d.DocCD != null);	
 then	
-		System.out.println("Exception in Addition");
+			for(int i=0;i<p.getDocInformation().size();i++){
+			d=p.getDocInformation().get(i);
+			System.out.println("DocCD\t"+d.getDocCD());
+			System.out.println("DocCD\t"+d.getDocGRPCD());
+			}
 end
