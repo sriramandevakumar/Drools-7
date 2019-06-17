@@ -22,8 +22,8 @@
         <value>291c15af-9e48-473a-915a-2f5e72f31e99</value>
       </metaData>
       <constraints>
-        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="RegistrationDetails" priority="1" type="rule" dialect="mvel" >p:ProposalInitiation(!(p.getDocInformation().size() &gt;0))</constraint>
         <constraint toNodeId="11" toType="DROOLS_DEFAULT" name="DocumentDetails" priority="1" type="rule" dialect="mvel" >p:ProposalInitiation(p.getDocInformation().size() &gt;0)</constraint>
+        <constraint toNodeId="6" toType="DROOLS_DEFAULT" name="RegistrationDetails" priority="1" type="rule" dialect="mvel" >p:ProposalInitiation(!(p.getDocInformation().size() &gt;0))</constraint>
       </constraints>
     </split>
     <ruleSet id="11" name="Read_Document" x="289" y="96" width="80" height="48" ruleFlowGroup="Read_Document" />

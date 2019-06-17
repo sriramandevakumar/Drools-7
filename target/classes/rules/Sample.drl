@@ -41,11 +41,11 @@ no-loop
 ruleflow-group "Read_Document"
 when	
       p:ProposalInitiation(p.CustID != null);
-      d:DocumentInfo(d.DocCD != null);	
+      	
 then	
 			for(int i=0;i<p.getDocInformation().size();i++){
-			d=p.getDocInformation().get(i);
+			DocumentInfo d=p.getDocInformation().get(i);
 			System.out.println("DocCD\t"+d.getDocCD());
-			System.out.println("DocCD\t"+d.getDocGRPCD());
+			System.out.println("DocGRPCD\t"+d.getDocGRPCD());
 			}
 end

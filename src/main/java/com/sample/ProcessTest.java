@@ -13,12 +13,17 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.sample.vall.value;
-
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 /**
  * This is a sample file to launch a process.
  */
 public class ProcessTest {
-
+	@GET 
+	@Path("/drools") 
+	@Produces(MediaType.TEXT_XML)
     public static final void main(String[] args) {
         try {
         	
